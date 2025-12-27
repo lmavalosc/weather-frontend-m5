@@ -145,19 +145,33 @@ function buscarLugarPorId(id) {
 // FUNCIÓN: CALCULAR ESTADÍSTICAS
 // ============================================
 function calcularEstadisticas(pronosticoSemanal) {
-    const mins = pronosticoSemanal.map(dia => dia.min);
-    const maxs = pronosticoSemanal.map(dia => dia.max);
-
-    const tempMin = Math.min(...mins);
-    const tempMax = Math.max(...maxs);
-
-    const promediosDiarios = pronosticoSemanal.map(dia => (dia.min + dia.max) / 2);
-    const tempPromedio = promediosDiarios.reduce((sum, val) => sum + val, 0) / promediosDiarios.length;
-
+    let tempMin = Infinity;
+    let tempMax = -Infinity;
+    let sumaPromedios = 0;
     const conteoClima = {};
-    pronosticoSemanal.forEach(dia => {
-        conteoClima[dia.estado] = (conteoClima[dia.estado] || 0) + 1;
-    });
+
+    // Uso de bucle FOR clásico (Requisito Académico)
+    for (let i = 0; i < pronosticoSemanal.length; i++) {
+        const dia = pronosticoSemanal[i];
+
+        // 1. Encontrar Mínimos y Máximos
+        if (dia.min < tempMin) tempMin = dia.min;
+        if (dia.max > tempMax) tempMax = dia.max;
+
+        // 2. Acumular para Promedio
+        const promedioDia = (dia.min + dia.max) / 2;
+        sumaPromedios += promedioDia;
+
+        // 3. Contar tipos de clima
+        // Equivalente a lógica de conteo o frecuencia
+        if (conteoClima[dia.estado]) {
+            conteoClima[dia.estado]++;
+        } else {
+            conteoClima[dia.estado] = 1;
+        }
+    }
+
+    const tempPromedio = sumaPromedios / pronosticoSemanal.length;
 
     return {
         tempMin,
