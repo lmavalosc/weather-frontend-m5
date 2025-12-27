@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicación de pronóstico del clima para ciudades de Chile">
+    <title>Clima Chile | Dashboard Meteorológico</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__container">
+                <h1 class="header__title">🌦️ Sistema Meteorológico Nacional</h1>
+                <p class="header__subtitle">Pronósticos y Estadísticas del Tiempo - Chile</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Sección de Tarjetas de Clima -->
+            <section class="weather-section">
+                <h2 class="weather-section__title">🌡️ Estaciones Meteorológicas de Chile</h2>
+                <div id="weatherCards" class="weather-section__grid"></div>
+            </section>
+
+            <!-- Sección de Detalle de Ciudad -->
+            <section id="detailSection" class="detail-section" style="display: none;">
+                <div class="detail-section__container">
+                    <button id="closeDetail" class="detail-section__close" aria-label="Cerrar detalle">✕</button>
+
+                    <div class="detail-header">
+                        <h2 id="detailCityName" class="detail-header__title"></h2>
+                    </div>
+
+                    <div class="detail-current">
+                        <div class="detail-current__temp" id="detailTemp"></div>
+                        <div class="detail-current__status" id="detailStatus"></div>
+                    </div>
+
+                    <div class="detail-forecast">
+                        <h3 class="detail-forecast__title">Pronóstico Semanal</h3>
+                        <div id="forecastGrid" class="detail-forecast__grid"></div>
+                    </div>
+
+                    <div class="detail-stats">
+                        <h3 class="detail-stats__title">Estadísticas de la Semana</h3>
+                        <div id="statsGrid" class="detail-stats__grid"></div>
+                        <h4 class="detail-stats__subtitle">Distribución de Clima</h4>
+                        <div id="climateGrid" class="detail-stats__grid"></div>
+                        <div id="summaryText" class="detail-stats__summary"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer__text">Sistema desarrollado por Lorenzo Ávalos | © 2025 Inversiones San Benito.
+                Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+
+</html>
