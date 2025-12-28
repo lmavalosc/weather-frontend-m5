@@ -75,8 +75,8 @@ Desarrollado como parte del **Módulo 4 (JavaScript)** para Bootcamp/Academia.
 ---
 
 ### 🔗 Enlaces y Repositorio
-- **Repositorio:** [GitHub - Proyecto Clima Chile](https://github.com/tu-usuario/clima-chile) *(Reemplazar con el enlace real)*
-- **Demo:** [GitHub Pages](https://tu-usuario.github.io/clima-chile/)
+- **Repositorio:** [GitHub - Proyecto Clima](https://github.com/lmavalosc/weather-frontend-m4)
+- **Demo:** [GitHub Pages](https://lmavalosc.github.io/weather-frontend-m4/)
 
 ### ✅ Cumplimiento de Rúbrica (Módulo 4)
 | Criterio | Estado | Detalle |
