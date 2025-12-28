@@ -1,0 +1,91 @@
+// Header
+.header {
+    background: linear-gradient(135deg, $primary-dark, darken($primary, 10%));
+    padding: 2rem 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid $primary;
+
+    &__container {
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+
+        background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+
+        animation: shimmer 3s ease-in-out infinite;
+    }
+
+    &__subtitle {
+        font-size: 1.1rem;
+        color: #cbd5e1;
+        font-weight: 300;
+    }
+}
+
+@keyframes shimmer {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+// Main Content
+.main {
+    flex: 1;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.weather-section {
+    margin-bottom: 2rem;
+
+    &__title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: $text-main;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    &__grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .weather-section__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+// Footer
+.footer {
+    background: $bg-gradient-mid;
+    padding: 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba($primary, 0.2);
+
+    &__text {
+        color: $text-muted;
+        font-size: 0.9rem;
+    }
+}

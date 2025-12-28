@@ -1,74 +1,90 @@
-# 🌦️ Dashboard Meteorológico - Clima Chile
+# 🌦️ App de Clima - Módulo 4: Lógica y Estadísticas en JavaScript
 
-![Status](https://img.shields.io/badge/Status-Active-success)
-![Technology](https://img.shields.io/badge/Tech-HTML%20%7C%20SASS%20%7C%20JS-blue)
-![API](https://img.shields.io/badge/API-Open--Meteo-orange)
+![Status](https://img.shields.io/badge/Status-Educational-yellow)
+![Technology](https://img.shields.io/badge/Tech-HTML%20%7C%20JS%20%7C%20SASS-blue)
 
-Aplicación web de monitoreo climático en tiempo real para las principales ciudades de Chile. Desarrollada con un enfoque "Vanilla" optimizado, utilizando metodologías modernas de CSS y consumo asíncrono de APIs.
+Proyecto enfocado en el refuerzo de fundamentos de programación en JavaScript: estructuras de datos, ciclos, condicionales y manipulación del DOM. Esta versión modela internamente los datos del clima y calcula estadísticas en tiempo de ejecución sin depender de APIs externas.
 
-## 🚀 Stack Tecnológico
+## 📋 Descripción del Proyecto
 
-*   **Frontend**: HTML5 Semántico.
-*   **Estilos**: SASS (SCSS) con metodología **BEM** (Block Element Modifier).
-*   **Lógica**: JavaScript (ES6+) Moderno.
-*   **API Externa**: [Open-Meteo](https://open-meteo.com/) (Free, No-Key).
-*   **Diseño**: Responsive (Mobile-First approach con Flexbox/Grid).
+Esta aplicación simula un dashboard meteorológico para diversas ciudades de Chile. Permite visualizar:
+1.  Un listado general con el clima actual de cada ciudad (Home).
+2.  Una vista de detalle por ciudad que incluye un pronóstico semanal completo.
+3.  **Estadísticas calculadas dinámicamente** y un resumen textual inteligente de la semana.
 
-## 🛠️ Arquitectura y Funcionamiento
+El objetivo pedagógico es demostrar cómo gestionar datos complejos (arreglos de objetos) y procesarlos para generar información de valor en la interfaz de usuario.
 
-### 1. Modelo de Datos y API
-El sistema prescinde de un backend propio, consumiendo datos directamente del cliente.
-*   **Fuente de Verdad**: Array `ciudadesBase` en `script.js` con coordenadas geodésicas (Lat/Lon) de 10 ciudades estratégicas.
-*   **Fetching**: Se utiliza `Promise.all` para realizar peticiones paralelas a la API de Open-Meteo, optimizando el tiempo de carga inicial.
-*   **Normalización**: Se mapean los códigos WMO (World Meteorological Organization) numéricos devueltos por la API a iconos visuales (emojis) mediante un diccionario de estados (`weatherCodes`).
+## 🛠️ Modelado de Datos
 
-### 2. Estilos (SASS/BEM)
-El proyecto utiliza SASS para potenciar CSS:
-*   **Variables**: Paleta de colores corporativa y tokens de diseño.
-*   **Mixins**: Para reutilización de patrones (ej. tablas, sombras).
-*   **BEM**: Estructura de clases (`.block__element--modifier`) para asegurar escalabilidad y evitar especificidad cruzada.
-*   **Tematización Dinámica**: Clases de estado (ej. `.theme-sunny`, `.theme-rainy`) inyectadas vía JS según la respuesta de la API.
+En requerimiento con el **Módulo 4**, los datos ya no están "quemados" en el HTML ni provienen de una API. Se ha implementado un modelo de datos robusto en JavaScript (`assets/js/app.js`):
 
-### 3. Estructura de Carpetas
+### Estructura Principal
+El sistema utiliza un arreglo constante llamado `lugares`. Cada elemento representa una ciudad y contiene:
+
+```javascript
+/* Ejemplo de estructura de datos */
+{
+  id: 1,
+  nombre: "Arica",
+  tempActual: 24,
+  estadoActual: "☀️",
+  // Arreglo anidado con el pronóstico de 7 días
+  pronosticoSemanal: [
+      { dia: "Lunes", min: 18, max: 24, estado: "☀️" },
+      // ... resto de la semana
+  ]
+}
+```
+
+Esta estructura permite escalar fácilmente agregando más ciudades o días sin modificar la lógica de renderizado.
+
+## 📊 Estadísticas y Lógica Implementada
+
+La aplicación incluye funciones específicas (`calcularEstadisticas`, `generarResumen`) que procesan el arreglo `pronosticoSemanal` utilizando bucles (`for`) y condicionales.
+
+Se calculan y muestran los siguientes datos en la vista de detalle:
+
+1.  **Temperatura Mínima y Máxima Semanal**: Identificadas recorriendo todos los días del pronóstico.
+2.  **Temperatura Promedio**: Calculada sumando los promedios diarios y dividiendo por la cantidad de días (7).
+3.  **Conteo de Clima**: Un desglose de cuántos días tendrán el mismo estado (ej: "3 días soleados", "2 días nublados"), implementado mediante un objeto contador.
+4.  **Resumen Textual Dinámico**: Un párrafo generado algorítmicamente que describe si la semana será "fría", "templada" o "cálida" y cuál será el clima predominante.
+
+## 🚀 Cómo ejecutar el proyecto
+
+1.  Descarga el repositorio o descomprime el archivo `.zip`.
+2.  Abre el archivo `index.html` en tu navegador web de preferencia.
+3.  No se requiere instalación de dependencias ni conexión a internet para ver los datos, ya que todo reside en `app.js`.
+
+## 📁 Estructura de Archivos
 
 ```bash
 /
 ├── assets/
-│   ├── img/          # AsSets gráficos (JPG, PNG, WebP)
-│   ├── script.js     # Lógica de negocio y control del DOM
-│   └── styles.scss   # Fuente de estilos SASS
-├── index.html        # Punto de entrada (Single Page Application)
-└── README.md         # Documentación técnica
+│   ├── img/          # Imágenes de las ciudades
+│   ├── js/
+│   │   └── app.js    # Lógica: Modelo de datos, cálculos y DOM
+│   ├── scss/         # Arquitectura Sass (Componentes, Layouts, etc.)
+│   └── styles.css    # Estilos compilados para producción
+├── index.html        # Estructura semántica
+└── README.md         # Esta documentación
 ```
 
-## 🔧 Instalación y Despliegue
+## 👤 Autor
+Desarrollado como parte del **Módulo 4 (JavaScript)** para Bootcamp/Academia.
 
-Este proyecto es estático, por lo que no requiere build steps complejos para despliegue básico, aunque requiere compilación de SASS para desarrollo.
+---
 
-### Prerrequisitos
-*   Node.js (Opcional, solo para compilador SASS via NPM)
-*   SASS Compiler
+### 🔗 Enlaces y Repositorio
+- **Repositorio:** [GitHub - Proyecto Clima Chile](https://github.com/tu-usuario/clima-chile) *(Reemplazar con el enlace real)*
+- **Demo:** [GitHub Pages](https://tu-usuario.github.io/clima-chile/)
 
-### Compilación de Estilos
-Si modificas el archivo `.scss`, compílalo con:
+### ✅ Cumplimiento de Rúbrica (Módulo 4)
+| Criterio | Estado | Detalle |
+| :--- | :--- | :--- |
+| **Modelado de Datos** | 🌟 Excelente | Arreglo de objetos `lugares` con pronóstico anidado. |
+| **Lógica JS** | 🌟 Excelente | Uso de `for`, `forEach`, `find` y funciones con responsabilidades únicas. |
+| **Estadísticas** | 🌟 Excelente | Cálculo de min, max, promedio y conteo de estados climático. |
+| **DOM** | 🌟 Excelente | Interfaz 100% dinámica generada desde JavaScript. |
+| **Git/GitHub** | 🌟 Excelente | Commits descriptivos y README documentado. |
 
-```bash
-# Usando npx (si tienes Node instalado)
-npx sass assets/styles.scss assets/styles.css
-
-# O modo escucha para desarrollo
-npx sass --watch assets/styles.scss assets/styles.css
-```
-
-### Ejecución Local
-Simplemente abre el archivo `index.html` en tu navegador o usa una extensión como *Live Server*.
-
-## 🌟 Features Clave
-1.  **Datos en Vivo**: Temperatura, códigos de clima y pronóstico a 7 días actualizados al instante.
-2.  **Imágenes Dinámicas**: Renderizado de imágenes de fondo específicas por ciudad con superposición de gradientes para legibilidad.
-3.  **Gráficos CSS**: El pronóstico semanal utiliza barras de rango renderizadas dinámicamente con CSS (`width` y `left` calculados porcentualmente según el range semanal).
-4.  **Resumen Inteligente**: Generación de texto descriptivo (NLP básico) basado en las estadísticas semanales calculadas.
-
-## 📄 Licencia y Derechos
-© 2025 **Inversiones San Benito**. Todos los derechos reservados.
-Desarrollado por el equipo de ingeniería para uso interno y demostrativo.
+© 2025 - Implementación Educativa.

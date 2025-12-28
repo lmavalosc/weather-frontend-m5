@@ -1,0 +1,14 @@
+body {
+    font-family: $font-stack;
+    background: linear-gradient(135deg, $bg-gradient-start, $bg-gradient-mid, $bg-gradient-end);
+    color: $text-main;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

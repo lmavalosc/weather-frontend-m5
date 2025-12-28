@@ -1,0 +1,235 @@
+// Detail Modal / Section
+.detail-section {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease-out;
+
+    &__container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        background: $card-bg;
+        border-radius: 16px;
+        padding: 2.5rem;
+        position: relative;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        animation: slideUp 0.4s ease-out;
+    }
+
+    &__close {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        @extend .btn-close;
+    }
+}
+
+.detail-header {
+    margin-bottom: 2rem;
+    text-align: center;
+
+    &__title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: $text-main;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.detail-current {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba($primary-dark, 0.2) 0%, rgba($accent, 0.1) 100%);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+
+    &__temp {
+        font-size: 4rem;
+        font-weight: 700;
+        color: $accent;
+    }
+
+    &__status {
+        font-size: 3rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .detail-section__container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+// Forecast Component
+.detail-forecast {
+    margin-bottom: 2rem;
+
+    &__title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: $text-main;
+        font-weight: 600;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+}
+
+.forecast-day {
+    background: rgba(51, 65, 85, 0.5);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid rgba($primary, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+        background: $card-bg-hover;
+        transform: scale(1.05);
+    }
+
+    &__name {
+        font-size: 0.85rem;
+        color: $text-muted;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    &__icon {
+        font-size: 2rem;
+        margin: 0.5rem 0;
+    }
+
+    &__temp {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: $accent;
+
+        .min {
+            color: $primary;
+        }
+
+        .max {
+            color: $danger;
+        }
+    }
+
+    &__bar-container {
+        margin-top: 0.5rem;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__bar {
+        position: absolute;
+        height: 100%;
+        background: linear-gradient(90deg, $primary, $danger);
+        border-radius: 2px;
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 768px) {
+    .detail-forecast__grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+
+// Stats Component
+.detail-stats {
+    margin-bottom: 2rem;
+
+    &__title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: $text-main;
+        font-weight: 600;
+    }
+
+    &__subtitle {
+        font-size: 1.2rem;
+        margin: 1.5rem 0 1rem;
+        color: $text-muted;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &__summary {
+        background: linear-gradient(135deg, rgba($warning, 0.2) 0%, rgba($warning, 0.05) 100%);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid $warning;
+        font-size: 1.1rem;
+        color: $text-main;
+        font-style: italic;
+        line-height: 1.8;
+    }
+}
+
+.stat-card {
+    background: rgba(51, 65, 85, 0.5);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid rgba($primary, 0.2);
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+        background: $card-bg-hover;
+        border-color: $primary;
+    }
+
+    &__label {
+        font-size: 0.85rem;
+        color: $text-muted;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    &__value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: $accent;
+    }
+}
