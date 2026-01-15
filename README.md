@@ -314,8 +314,8 @@ Desarrollado como parte del **Módulo 5 (POO, ES6+ y API)** para Bootcamp/Academ
 
 ## 🔗 Enlaces y Repositorio
 
-- **Repositorio**: [GitHub - Proyecto Clima](https://github.com/lmavalosc/weather-frontend-m4)
-- **Demo**: [GitHub Pages](https://lmavalosc.github.io/weather-frontend-m4/)
+- **Repositorio**: [GitHub - Proyecto Clima](https://github.com/lmavalosc/weather-frontend-m5)
+- **Demo**: [GitHub Pages](https://lmavalosc.github.io/weather-frontend-m5/)
 
 ## ✅ Cumplimiento de Rúbrica (Módulo 5)
 

@@ -25,11 +25,16 @@ body {
 }
 
 /* Header Block */
+/* Header Block */
 .header {
-  background: linear-gradient(135deg, #1e3a8a, #335aca);
-  padding: 2rem 1.5rem;
+  background: linear-gradient(rgba(30, 58, 138, 0.4), rgba(30, 58, 138, 0.6)), url('img/header-bg.png');
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 1.5rem;
+  /* Un poco más de padding para lucir la imagen */
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   border-bottom: 2px solid #3b82f6;
+  position: relative;
 }
 
 .header__container {

@@ -298,9 +298,9 @@ export class WeatherApp {
         const alerts = [];
 
         // Reglas de negocio para alertas
-        if (stats.maxSemana > 30) alerts.push("🚨 Alerta de Ola de Calor");
+        if (stats.avg > 25) alerts.push("🚨 Alerta de Ola de Calor");
         if (stats.minSemana < 5) alerts.push("🥶 Alerta de Frío Extremo");
-        if (stats.rainDays >= 3) alerts.push("☔ Semana Lluviosa");
+        if (stats.rainDays > 3) alerts.push("☔ Semana Lluviosa");
 
         // Construcción del resumen
         let summary = `<strong>${cityName}:</strong> `;
