@@ -183,8 +183,8 @@ fe0349e - refactor: restructure project assets, implement SCSS architecture
 
 ## 🔗 Enlaces del Proyecto
 
-- **Repositorio GitHub**: https://github.com/lmavalosc/weather-frontend-m4
-- **Demo en GitHub Pages**: https://lmavalosc.github.io/weather-frontend-m4/
+- **Repositorio GitHub**: https://github.com/lmavalosc/weather-frontend-m5
+- **Demo en GitHub Pages**: https://lmavalosc.github.io/weather-frontend-m5/
 
 ---
 
