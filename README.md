@@ -49,8 +49,9 @@ const data = await api.getWeather(-33.45, -70.67); // Santiago
 **Propiedades**:
 - `api`: Instancia de ApiClient
 - `lugares`: Array de configuración de ciudades (nombre, coordenadas, imágenes)
-- `ui`: Referencias a elementos del DOM
-- `dataCache`: Cache simple para optimizar llamadas a la API
+- `dataCache`: Instancia de `Map` para optimizar llamadas a la API (evita re-peticiones innecesarias)
+- `weatherMapping`: Objeto de configuración que vincula códigos WMO con emojis y temas visuales
+- `ui`: Referencias centralizadas a elementos del DOM para mejorar el rendimiento
 
 **Métodos principales**:
 - `init()`: Inicializa la aplicación
@@ -59,8 +60,8 @@ const data = await api.getWeather(-33.45, -70.67); // Santiago
 - `showDetail(id)`: Muestra la vista de detalle de una ciudad
 - `calculateStats(daily)`: Calcula estadísticas semanales (min, max, promedio, conteo)
 - `renderAlertsAndSummary(name, stats)`: Genera alertas basadas en reglas de negocio
-- `getWeatherEmoji(code)`: Mapea códigos WMO a emojis
-- `applyTheme(emoji)`: Aplica temas visuales dinámicos
+- `getWeatherEmoji(code)`: Mapea códigos WMO a emojis usando `weatherMapping`
+- `applyTheme(code)`: Aplica temas visuales dinámicos (Sunny, Cloudy, Rainy, Snowy) al contenedor de detalle
 
 **Flujo de datos**:
 ```
